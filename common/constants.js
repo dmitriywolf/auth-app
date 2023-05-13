@@ -1,11 +1,11 @@
 export const PATHS = {
   home: '/',
-  auth: '/auth',
-  logIn: '/auth?tab=login',
-  signUp: '/auth?tab=signup',
-  forgotPassword: '/forgot-password',
-  resetPassword: '/reset-password',
-  activateEmail: '/activate-email',
+  profile: '/profile',
+  logIn: '/auth/login',
+  signUp: '/auth/signup',
+  forgotPassword: '/auth/forgot-password',
+  resetPassword: '/auth/reset-password',
+  activateEmail: '/auth/activate-email',
 };
 
 export const API_BREAKPOINTS = {

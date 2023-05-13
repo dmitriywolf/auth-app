@@ -7,6 +7,7 @@ import DiscordProvider from 'next-auth/providers/discord';
 import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 
+import { PATHS } from '@/common/constants';
 import clientPromise from '@/lib/mongoAdapter';
 import User from '@/models/User';
 import connectDb from '@/utils/connectDb';
@@ -64,7 +65,7 @@ export default NextAuth({
     strategy: 'jwt',
   },
   pages: {
-    signIn: '/auth',
+    signIn: PATHS.logIn,
   },
   callbacks: {
     async jwt({ token, user, account }) {

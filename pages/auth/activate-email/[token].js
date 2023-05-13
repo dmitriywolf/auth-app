@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { signIn } from 'next-auth/react';
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 
 import { API_BREAKPOINTS } from '@/common/constants';
 
-export default function ActivateEmail({ token }) {
+export default function ActivateEmailPage({ token }) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
@@ -17,10 +17,6 @@ export default function ActivateEmail({ token }) {
     }
   }, [token]);
 
-  const signInHandler = () => {
-    signIn();
-  };
-
   useEffect(() => {
     activateAccount();
   }, [token, activateAccount]);
@@ -30,23 +26,23 @@ export default function ActivateEmail({ token }) {
       {error && (
         <div>
           <p className='text-xl font-bold text-red-500'>{error}</p>
-          <button
+          <Link
             className='text-md mb-1 mt-4 rounded-md bg-blue-500 px-8 py-2 font-bold uppercase text-white transition-all duration-150 ease-linear hover:bg-blue-700 sm:mr-2'
-            onClick={signInHandler}
+            href={PATHS.logIn}
           >
             log in instead
-          </button>
+          </Link>
         </div>
       )}
       {success && (
         <div>
           <p className='text-xl font-bold text-green-500'>{success}</p>
-          <button
+          <Link
             className='text-md mb-1 mt-4 rounded-md bg-blue-500 px-8 py-2 font-bold uppercase text-white transition-all duration-150 ease-linear hover:bg-blue-700 sm:mr-2'
-            onClick={signInHandler}
+            href={PATHS.logIn}
           >
             Log in
-          </button>
+          </Link>
         </div>
       )}
     </div>

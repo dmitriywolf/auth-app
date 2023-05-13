@@ -36,7 +36,7 @@ export default function LogInContainer() {
     if (res.error) {
       return toast.error(res.error);
     } else {
-      return router.push(PATHS.home);
+      return router.push(PATHS.profile);
     }
   };
 

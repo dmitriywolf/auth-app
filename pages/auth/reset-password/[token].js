@@ -1,6 +1,6 @@
 import ResetPasswordContainer from '@/containers/resetPassword.container';
 
-export default function ResetPassword({ token }) {
+export default function ResetPasswordPage({ token }) {
   return (
     <div className='flex w-full items-center justify-center'>
       <div className='h-100 flex w-full items-center justify-center'>

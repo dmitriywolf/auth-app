@@ -12,11 +12,11 @@ export async function middleware(req) {
     secureCookie: process.env.NODE_ENV === 'production',
   });
 
-  if (pathname == PATHS.home) {
+  if (pathname == PATHS.profile) {
     if (!token) return NextResponse.redirect(`${process.env.NEXTAUTH_URL}${PATHS.logIn}`);
   }
 
-  if (pathname == PATHS.auth) {
+  if (pathname == PATHS.logIn || pathname == PATHS.signUp) {
     if (token) return NextResponse.redirect(`${origin}`);
   }
 }

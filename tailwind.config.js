@@ -21,6 +21,11 @@ module.exports = {
         xl: '2rem',
       },
     },
+    extend: {
+      backgroundImage: {
+        // home: "url('/img/main.jpg')",
+      },
+    },
   },
   plugins: [],
 };
