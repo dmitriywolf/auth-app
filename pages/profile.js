@@ -1,52 +1,54 @@
+import Head from 'next/head';
 import Image from 'next/image';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 export default function ProfilePage() {
   const { data: session } = useSession();
 
-  const signOutHandler = () => {
-    signOut();
-  };
+  const event = new Date(session?.expires);
 
   return (
-    <div className='home flex min-h-screen items-center justify-center bg-black text-white'>
-      <div className='container mx-auto'>
-        <div className='relative flex w-full flex-col rounded-lg border border-white'>
-          <div className='flex flex-wrap items-center justify-center'>
-            <div className='w-full text-right'>
-              <div className='px-3 py-6'>
-                <button
-                  className='text-md mb-1 rounded-md bg-blue-500 px-8 py-2 font-bold uppercase transition-all duration-150 ease-linear hover:bg-blue-700 sm:mr-2'
-                  onClick={signOutHandler}
-                >
-                  Log out
-                </button>
-              </div>
-            </div>
-            <div className='flex w-full justify-center'>
-              {session?.user?.image && (
-                <Image
-                  src={session?.user?.image}
-                  alt={`${session?.user?.name} image`}
-                  className='rounded-full'
-                  width={90}
-                  height={90}
-                />
-              )}
-            </div>
-            <div className='mt-12 text-center'>
-              <h3 className='mb-2 text-4xl font-semibold'>{session?.user?.name}</h3>
-              <div className='mb-2 text-sm font-bold'>{session?.user?.email}</div>
-              <div className='mb-2 mt-10'>
-                You logged in using &nbsp;
-                <span className='italix ml-2 rounded-md bg-blue-400 px-4 py-1 text-lg font-bold capitalize text-white'>
+    <>
+      <Head>
+        <title>{session?.user?.name || 'Profile'}</title>
+      </Head>
+      <section className='flex flex-1'>
+        <div className='container mx-auto'>
+          <div className='mt-5 flex w-full flex-col items-center gap-6 rounded-xl border bg-white p-4 md:flex-row'>
+            {session?.user?.image && (
+              <Image
+                className='rounded-lg'
+                src={session?.user?.image}
+                alt={`${session?.user?.name} image`}
+                width={150}
+                height={150}
+              />
+            )}
+            <div className='flex flex-col gap-1 px-2 md:px-0'>
+              <p className='flex items-center text-sm md:gap-2 md:text-base'>
+                <span className='w-20 text-slate-400'>Name:</span>
+                <span className='font-semibold'>{session?.user?.name}</span>
+              </p>
+              <p className='flex items-center text-sm md:gap-2 md:text-base'>
+                <span className='w-20 text-slate-400'>Email:</span>
+                <span>{session?.user?.email}</span>
+              </p>
+              <p className='flex items-center text-sm md:gap-2 md:text-base'>
+                <span className='w-20 text-slate-400'>Expires to:</span>
+                <span>{event.toLocaleDateString('en-GB', options)}</span>
+              </p>
+              <p className='flex items-center text-sm md:gap-2 md:text-base'>
+                <span className='w-20 text-slate-400'>Logged by:</span>
+                <span className='inline-block rounded-md bg-primary px-2 capitalize leading-8 text-slate-50'>
                   {session?.user?.provider}
                 </span>
-              </div>
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

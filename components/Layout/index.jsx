@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main className='min-h-screen bg-zinc-100 pt-20'>{children}</main>
+      <main className='flex min-h-screen flex-col bg-zinc-100 pt-20'>{children}</main>
     </>
   );
 }
