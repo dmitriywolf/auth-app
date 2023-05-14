@@ -48,7 +48,7 @@ export default function ProviderBtn({ id, label }) {
   return (
     <button
       onClick={signInHandler}
-      className='mb-2 flex w-full items-center justify-center gap-2 rounded-md px-4 py-2 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200'
+      className='flex items-center justify-center gap-2 rounded-md p-2 font-semibold text-white'
       type='button'
       style={{ background: colors[id] }}
     >

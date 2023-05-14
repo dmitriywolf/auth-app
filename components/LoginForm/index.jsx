@@ -7,14 +7,16 @@ import SlideBtn from '@/components/SlideBtn';
 
 export default function LogInForm({ register, errors, isSubmitting, submitForm }) {
   return (
-    <div className='w-full px-12 py-4'>
-      <h2 className='text-center text-2xl font-bold tracking-wide text-gray-800'>Log in</h2>
-      <p className='mt-2 text-center text-sm text-gray-600'>
-        You do not have an account ? &nbsp;
-        <Link className='cursor-pointer text-blue-600 hover:text-blue-700 hover:underline' href={PATHS.signUp}>
+    <div className='w-full'>
+      <h2 className='text-center text-3xl font-bold'>Log in</h2>
+
+      <p className='mt-2 text-center'>
+        Do not have an account? &nbsp;
+        <Link className='cursor-pointer text-link hover:text-linkHover' href={PATHS.signUp}>
           Sign up
         </Link>
       </p>
+
       <form onSubmit={submitForm} className='my-8 text-sm'>
         <Input
           name='email'

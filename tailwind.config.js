@@ -27,6 +27,8 @@ module.exports = {
       colors: {
         primary: colors.cyan[500],
         primaryHover: colors.cyan[600],
+        link: colors.blue[500],
+        linkHover: colors.blue[700],
       },
     },
   },
