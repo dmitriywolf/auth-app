@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { FiLock, FiMail } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
 
 import { PATHS } from '@/common/constants';
+import FormBtn from '@/components/FormBtn';
 import Input from '@/components/Input';
-import SlideBtn from '@/components/SlideBtn';
 
 export default function ForgotPasswordForm({ register, errors, isSubmitting, submitForm }) {
   return (
@@ -26,7 +26,7 @@ export default function ForgotPasswordForm({ register, errors, isSubmitting, sub
           error={errors?.email?.message}
           disabled={isSubmitting}
         />
-        <SlideBtn type='submit' text='Send email' slide_text='Secure' icon={<FiLock />} disabled={isSubmitting} />
+        <FormBtn title='Send email' submitting={isSubmitting} />
       </form>
     </div>
   );

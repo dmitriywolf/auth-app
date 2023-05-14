@@ -7,7 +7,7 @@ import TailwindIcon from '@/public/img/tailwind.svg';
 
 export default function AppStack() {
   return (
-    <div className='flex gap-4 md:gap-6 md:pb-10'>
+    <div className='flex gap-4 md:gap-6'>
       <NextjsIcon className='h-12 w-12 fill-slate-500' />
       <MongoIcon className='h-12 w-12' />
       <JWTIcon className='h-12 w-12' />

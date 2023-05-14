@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { FiLock } from 'react-icons/fi';
 
 import { PATHS } from '@/common/constants';
+import FormBtn from '@/components/FormBtn';
 import Input from '@/components/Input';
 import PasswordScore from '@/components/PasswordScore';
-import SlideBtn from '@/components/SlideBtn';
 
 export default function ResetPasswordForm({ register, errors, isSubmitting, submitForm, watchPassword }) {
   return (
@@ -38,7 +38,7 @@ export default function ResetPasswordForm({ register, errors, isSubmitting, subm
           error={errors?.confirmPassword?.message}
           disabled={isSubmitting}
         />
-        <SlideBtn type='submit' text='Change password' slide_text='Secure' icon={<FiLock />} disabled={isSubmitting} />
+        <FormBtn title='Change password' submitting={isSubmitting} />
       </form>
     </div>
   );

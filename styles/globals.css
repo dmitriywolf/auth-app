@@ -10,3 +10,9 @@
     color: #475569;
   }
 }
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

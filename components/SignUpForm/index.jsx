@@ -4,9 +4,9 @@ import { CiUser } from 'react-icons/ci';
 import { FiLock, FiMail } from 'react-icons/fi';
 
 import { PATHS } from '@/common/constants';
+import FormBtn from '@/components/FormBtn';
 import Input from '@/components/Input';
 import PasswordScore from '@/components/PasswordScore';
-import SlideBtn from '@/components/SlideBtn';
 
 export default function SignUpForm({ register, errors, isSubmitting, submitForm, watchPassword }) {
   return (
@@ -91,7 +91,7 @@ export default function SignUpForm({ register, errors, isSubmitting, submitForm,
           </label>
         </div>
         <div>{errors?.accept && <p className='mt-1 text-sm text-red-600'>{errors?.accept?.message}</p>}</div>
-        <SlideBtn type='submit' text='Sign up' slide_text='Secure sign up' icon={<FiLock />} disabled={isSubmitting} />
+        <FormBtn title='Sign up' submitting={isSubmitting} />
       </form>
     </div>
   );

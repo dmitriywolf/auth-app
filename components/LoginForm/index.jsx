@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { FiLock, FiMail } from 'react-icons/fi';
 
 import { PATHS } from '@/common/constants';
+import FormBtn from '@/components/FormBtn';
 import Input from '@/components/Input';
-import SlideBtn from '@/components/SlideBtn';
 
 export default function LogInForm({ register, errors, isSubmitting, submitForm }) {
   return (
@@ -17,7 +17,7 @@ export default function LogInForm({ register, errors, isSubmitting, submitForm }
         </Link>
       </p>
 
-      <form onSubmit={submitForm} className='my-8 text-sm'>
+      <form onSubmit={submitForm}>
         <Input
           name='email'
           label='Email address'
@@ -28,6 +28,7 @@ export default function LogInForm({ register, errors, isSubmitting, submitForm }
           error={errors?.email?.message}
           disabled={isSubmitting}
         />
+
         <Input
           name='password'
           label='Password'
@@ -38,12 +39,12 @@ export default function LogInForm({ register, errors, isSubmitting, submitForm }
           error={errors?.password?.message}
           disabled={isSubmitting}
         />
-        <div className='mt-2 w-fit hover:underline'>
-          <Link href={PATHS.forgotPassword} className=' text-blue-600'>
-            Forgot password ?
-          </Link>
-        </div>
-        <SlideBtn type='submit' text='Log in' slide_text='Secure log in' icon={<FiLock />} disabled={isSubmitting} />
+
+        <Link href={PATHS.forgotPassword} className='cursor-pointer text-link hover:text-linkHover'>
+          Forgot password?
+        </Link>
+
+        <FormBtn title='Log in' submitting={isSubmitting} />
       </form>
     </div>
   );
