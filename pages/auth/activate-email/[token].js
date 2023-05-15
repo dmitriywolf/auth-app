@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Link from 'next/link';
+import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
 import { API_BREAKPOINTS } from '@/common/constants';
@@ -22,30 +22,20 @@ export default function ActivateEmailPage({ token }) {
   }, [token, activateAccount]);
 
   return (
-    <div className='flex h-screen items-center justify-center bg-black text-center'>
+    <section className='flex justify-center xl:pt-12'>
       {error && (
         <div>
-          <p className='text-xl font-bold text-red-500'>{error}</p>
-          <Link
-            className='text-md mb-1 mt-4 rounded-md bg-blue-500 px-8 py-2 font-bold uppercase text-white transition-all duration-150 ease-linear hover:bg-blue-700 sm:mr-2'
-            href={PATHS.logIn}
-          >
-            log in instead
-          </Link>
+          <Image src='/img/error.png' width={256} height={256} alt='result' />
+          <p className='text-xl font-bold text-red-500'>ERROR: {error}</p>
         </div>
       )}
       {success && (
         <div>
-          <p className='text-xl font-bold text-green-500'>{success}</p>
-          <Link
-            className='text-md mb-1 mt-4 rounded-md bg-blue-500 px-8 py-2 font-bold uppercase text-white transition-all duration-150 ease-linear hover:bg-blue-700 sm:mr-2'
-            href={PATHS.logIn}
-          >
-            Log in
-          </Link>
+          <Image src='/img/success.png' width={256} height={256} alt='result' />
+          <p className='text-xl font-bold text-green-500'>SUCCESS: {success}</p>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 

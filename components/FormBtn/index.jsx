@@ -6,7 +6,7 @@ export default function FormBtn({ title, submitting }) {
     <button
       type='submit'
       disabled={submitting}
-      className='mt-4 flex w-full items-center justify-center overflow-hidden rounded-md border-none bg-primary px-8 py-2 hover:bg-primaryHover'
+      className='mt-4 flex h-10 w-full items-center justify-center overflow-hidden rounded-md border-none bg-primary px-8 hover:bg-primaryHover'
     >
       {submitting ? (
         <BeatLoader color='#fff' size={16} />

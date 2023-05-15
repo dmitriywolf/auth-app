@@ -6,7 +6,7 @@ import LogInContainer from '@/containers/logIn.container';
 
 export default function LoginPage({ providers }) {
   return (
-    <section className='flex justify-center lg:pt-12'>
+    <section className='flex justify-center xl:pt-12'>
       <div className='w-full max-w-3xl flex-col items-center justify-center rounded-xl border bg-white p-6'>
         <LogInContainer />
         <Divider />

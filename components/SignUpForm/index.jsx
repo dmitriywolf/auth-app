@@ -10,22 +10,24 @@ import PasswordScore from '@/components/PasswordScore';
 
 export default function SignUpForm({ register, errors, isSubmitting, submitForm, watchPassword }) {
   return (
-    <div className='w-full px-12 py-4'>
-      <h2 className='text-center text-2xl font-bold tracking-wide text-gray-800'>Sign up</h2>
-      <p className='mt-2 text-center text-sm text-gray-600'>
-        You already have an account ? &nbsp;
-        <Link href={PATHS.logIn} className='cursor-pointer text-blue-600 hover:text-blue-700 hover:underline'>
+    <div className='w-full'>
+      <h2 className='text-center text-3xl font-bold'>Sign up</h2>
+
+      <p className='mt-2 text-center'>
+        Have you already have an account? &nbsp;
+        <Link href={PATHS.logIn} className='cursor-pointer text-link hover:text-linkHover'>
           Log in
         </Link>
       </p>
-      <form className='my-8 text-sm' onSubmit={submitForm}>
+
+      <form onSubmit={submitForm}>
         <div className='gap-2 md:flex'>
           <Input
             name='first_name'
             label='First name'
             type='text'
             icon={<CiUser />}
-            placeholder='example'
+            placeholder='First name'
             register={register}
             error={errors?.first_name?.message}
             disabled={isSubmitting}
@@ -35,7 +37,7 @@ export default function SignUpForm({ register, errors, isSubmitting, submitForm,
             label='Last name'
             type='text'
             icon={<CiUser />}
-            placeholder='example'
+            placeholder='Last name'
             register={register}
             error={errors?.last_name?.message}
             disabled={isSubmitting}
@@ -46,7 +48,7 @@ export default function SignUpForm({ register, errors, isSubmitting, submitForm,
           label='Email address'
           type='text'
           icon={<FiMail />}
-          placeholder='example@emaple.com'
+          placeholder='example@mail.com'
           register={register}
           error={errors?.email?.message}
           disabled={isSubmitting}
@@ -82,15 +84,23 @@ export default function SignUpForm({ register, errors, isSubmitting, submitForm,
           error={errors?.confirmPassword?.message}
           disabled={isSubmitting}
         />
-        <div className='mt-3 flex items-center'>
-          <input type='checkbox' id='accept' className='mr-2 rounded focus:ring-0' {...register('accept')} />
-          <label htmlFor='accept' className='text-gray-700'>
-            I accept the&nbsp; <button className='text-blue-600 hover:text-blue-700 hover:underline'>terms</button>
+
+        <div className='relative flex items-center pb-4'>
+          <input {...register('accept')} type='checkbox' id='accept' className='mr-2 rounded focus:ring-0' />
+
+          <label htmlFor='accept' className='text-sm text-gray-700 '>
+            I accept the&nbsp;
+            <button type='button' className='text-link hover:text-linkHover hover:underline'>
+              terms
+            </button>
             &nbsp;and&nbsp;
-            <button className='text-blue-600 hover:text-blue-700 hover:underline'>privacy policy</button>
+            <button type='button' className='text-link hover:text-linkHover hover:underline'>
+              privacy policy
+            </button>
           </label>
+          {errors?.accept && <p className='absolute bottom-0 text-xs text-error'>{errors?.accept?.message}</p>}
         </div>
-        <div>{errors?.accept && <p className='mt-1 text-sm text-red-600'>{errors?.accept?.message}</p>}</div>
+
         <FormBtn title='Sign up' submitting={isSubmitting} />
       </form>
     </div>

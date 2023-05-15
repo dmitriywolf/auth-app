@@ -7,15 +7,17 @@ import Input from '@/components/Input';
 
 export default function ForgotPasswordForm({ register, errors, isSubmitting, submitForm }) {
   return (
-    <div className='w-full px-12 py-4'>
-      <h2 className='text-center text-2xl font-bold tracking-wide text-gray-800'>Forgot password</h2>
-      <p className='mt-2 text-center text-sm text-gray-600'>
+    <div className='w-full'>
+      <h2 className='text-center text-3xl font-bold'>Forgot password</h2>
+
+      <p className='mt-2 text-center'>
         Log in instead &nbsp;
-        <Link href={PATHS.logIn} className='cursor-pointer text-blue-600 hover:text-blue-700 hover:underline'>
+        <Link href={PATHS.logIn} className='cursor-pointer text-link hover:text-linkHover'>
           Log in
         </Link>
       </p>
-      <form className='my-8 text-sm' onSubmit={submitForm}>
+
+      <form onSubmit={submitForm}>
         <Input
           name='email'
           label='Email address'

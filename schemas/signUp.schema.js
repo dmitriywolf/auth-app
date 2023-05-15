@@ -24,7 +24,7 @@ const schema = z
     confirmPassword: z.string(),
     accept: z.literal(true, {
       errorMap: () => ({
-        message: 'Please agree to all the terms and conditions before continuing.',
+        message: 'Please agree to all the terms and conditions',
       }),
     }),
   })

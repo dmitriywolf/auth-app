@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ImEye, ImEyeBlocked } from 'react-icons/im';
-// import { IoAlertCircle } from 'react-icons/io5';
 
 export default function Input({ name, label, type, icon, placeholder, register, error, disabled }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,11 +24,12 @@ export default function Input({ name, label, type, icon, placeholder, register, 
           placeholder={placeholder}
           disabled={disabled}
           className={`w-full rounded-md border ${
-            error ? 'border-error' : 'border-zinc-400'
-          } pl-8 pr-7 leading-10  outline-offset-2 outline-transparent focus:border-blue-500 focus:ring-2 focus:ring-blue-700`}
+            error
+              ? 'border-error focus:border-error focus:ring-error'
+              : 'border-zinc-400 focus:border-blue-500 focus:ring-blue-700'
+          } pl-8 pr-7 leading-10 outline-offset-2 outline-transparent focus:ring-2 `}
         />
 
-        {/* Show / hide password */}
         {(name == 'password' || name == 'confirmPassword') && (
           <button
             type='button'
