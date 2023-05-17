@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { API_BREAKPOINTS } from '@/common/constants';
-import SignUpForm from '@/components/SignUpForm';
+import SignUpForm from '@/components/forms/SignUpForm';
 import { SIGN_UP_SCHEMA } from '@/schemas';
 
 const DEFAULT_VALUES = {

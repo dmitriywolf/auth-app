@@ -1,12 +1,20 @@
+import Head from 'next/head';
+
+import { Plate, Section } from '@/components/UI';
 import ResetPasswordContainer from '@/containers/resetPassword.container';
 
 export default function ResetPasswordPage({ token }) {
   return (
-    <section className='flex justify-center xl:pt-12'>
-      <div className='w-full max-w-3xl flex-col items-center justify-center rounded-xl border bg-white p-6'>
-        <ResetPasswordContainer token={token} />
-      </div>
-    </section>
+    <>
+      <Head>
+        <title>Reset password</title>
+      </Head>
+      <Section>
+        <Plate>
+          <ResetPasswordContainer token={token} />
+        </Plate>
+      </Section>
+    </>
   );
 }
 

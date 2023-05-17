@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { API_BREAKPOINTS } from '@/common/constants';
-import ResetPasswordForm from '@/components/ResetPasswordForm';
+import ResetPasswordForm from '@/components/forms/ResetPasswordForm';
 import { RESET_PASSWORD_SCHEMA } from '@/schemas';
 
 export default function ResetPasswordContainer({ token }) {

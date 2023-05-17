@@ -8,9 +8,9 @@ export default function Header() {
   const { data: session } = useSession();
 
   return (
-    <header className='absolute h-20 w-full'>
-      <div className='container mx-auto h-full'>
-        <div className='flex h-full items-center justify-between'>
+    <header className='absolute w-full'>
+      <div className='container mx-auto'>
+        <div className='flex h-20 items-center justify-between'>
           <Logo />
           {session ? <ProfileMenu session={session} /> : <AuthMenu />}
         </div>

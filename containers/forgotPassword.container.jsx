@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { API_BREAKPOINTS } from '@/common/constants';
-import ForgotPasswordForm from '@/components/ForgotPasswordForm';
+import ForgotPasswordForm from '@/components/forms/ForgotPasswordForm';
 import { FORGOT_PASSWORD_SCHEMA } from '@/schemas';
 
 export default function ForgotPasswordContainer() {

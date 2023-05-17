@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import { PATHS } from '@/common/constants';
-import LogInForm from '@/components/LoginForm';
+import LogInForm from '@/components/forms/LoginForm';
 import { LOG_IN_SCHEMA } from '@/schemas';
 
 export default function LogInContainer() {
