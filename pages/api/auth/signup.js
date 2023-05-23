@@ -60,7 +60,7 @@ export default async function signUpHandler(req, res) {
       template: confirmEmailTemplate,
     });
 
-    res.json({
+    res.status(201).json({
       message: 'Register success! Please activate your account to start.',
     });
   } catch (error) {

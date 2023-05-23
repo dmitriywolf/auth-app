@@ -1,10 +1,9 @@
-import axios from 'axios';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { CircleLoader } from 'react-spinners';
 
-import { API_BREAKPOINTS } from '@/common/constants';
+import { postActivateEmail } from '@/api';
 import { Plate, Section } from '@/components/UI';
 
 export default function ActivateEmailPage({ token }) {
@@ -15,10 +14,10 @@ export default function ActivateEmailPage({ token }) {
   const activateAccount = useCallback(async () => {
     try {
       setloading(true);
-      const { data } = await axios.put(API_BREAKPOINTS.activateEmail, { token });
+      const data = await postActivateEmail({ token });
       setSuccess(data.message);
     } catch (error) {
-      setError((error?.response?.data).message);
+      setError(error.message);
     } finally {
       setloading(false);
     }
@@ -31,7 +30,7 @@ export default function ActivateEmailPage({ token }) {
   return (
     <>
       <Head>
-        <title>Not Found</title>
+        <title>Activate Email</title>
       </Head>
       <Section>
         <Plate>
@@ -44,7 +43,7 @@ export default function ActivateEmailPage({ token }) {
             ) : (
               <>
                 <Image src={`/img/${error ? 'error' : 'success'}.png`} width={150} height={150} alt='result' />
-                <p className='pt-6 text-xl font-bold'>{error ? 'Something went wrong' : success}!</p>
+                <p className='pt-6 text-xl font-bold'>{error ? error : success}!</p>
               </>
             )}
           </div>

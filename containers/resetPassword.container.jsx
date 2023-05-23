@@ -1,13 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { API_BREAKPOINTS } from '@/common/constants';
+import { postResetPassword } from '@/api';
+import { PATHS } from '@/common/constants';
 import ResetPasswordForm from '@/components/forms/ResetPasswordForm';
 import { RESET_PASSWORD_SCHEMA } from '@/schemas';
 
 export default function ResetPasswordContainer({ token }) {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,16 +26,14 @@ export default function ResetPasswordContainer({ token }) {
 
   const watchPassword = watch('password');
 
-  const onSubmit = async (values) => {
+  const onSubmit = async ({ password }) => {
     try {
-      const { data } = await axios.post(API_BREAKPOINTS.resetPassword, {
-        password: values.password,
-        token,
-      });
+      const data = await postResetPassword({ password, token });
       reset();
       toast.success(data.message);
+      router.push(PATHS.logIn);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.message);
     }
   };
 

@@ -1,13 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { API_BREAKPOINTS } from '@/common/constants';
+import { postForgotPassword } from '@/api';
+import { PATHS } from '@/common/constants';
 import ForgotPasswordForm from '@/components/forms/ForgotPasswordForm';
 import { FORGOT_PASSWORD_SCHEMA } from '@/schemas';
 
 export default function ForgotPasswordContainer() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -22,12 +24,11 @@ export default function ForgotPasswordContainer() {
   const onSubmit = async (values) => {
     const { email } = values;
     try {
-      const { data } = await axios.post(API_BREAKPOINTS.forgotPassword, {
-        email,
-      });
+      const data = await postForgotPassword({ email });
       toast.success(data.message);
+      router.push(PATHS.home);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.message);
     }
   };
 

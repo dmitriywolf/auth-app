@@ -1,9 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { API_BREAKPOINTS } from '@/common/constants';
+import { postRegister } from '@/api';
+import { PATHS } from '@/common/constants';
 import SignUpForm from '@/components/forms/SignUpForm';
 import { SIGN_UP_SCHEMA } from '@/schemas';
 
@@ -18,6 +19,7 @@ const DEFAULT_VALUES = {
 };
 
 export default function SignUpContainer() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -33,13 +35,12 @@ export default function SignUpContainer() {
 
   const onSubmit = async (values) => {
     try {
-      const { data } = await axios.post(API_BREAKPOINTS.signUp, {
-        ...values,
-      });
+      const data = await postRegister(values);
       reset();
       toast.success(data.message);
+      router.push(PATHS.home);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.message);
     }
   };
 

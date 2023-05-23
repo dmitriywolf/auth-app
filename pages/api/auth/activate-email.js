@@ -25,7 +25,7 @@ export default async function activateEmailHandler(req, res) {
 
     await User.findByIdAndUpdate(user.id, { emailVerified: true });
 
-    res.json({
+    res.status(200).json({
       message: 'Your account has beeen successfully verified.',
     });
   } catch (error) {

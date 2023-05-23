@@ -24,7 +24,7 @@ export default async function resetPasswordHandler(req, res) {
 
     await User.findByIdAndUpdate(user.id, { password: cryptedPassword });
 
-    res.json({
+    res.status(200).json({
       message: 'Your account password has beeen successfully updated.',
     });
   } catch (error) {

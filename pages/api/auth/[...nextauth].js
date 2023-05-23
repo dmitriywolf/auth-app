@@ -34,6 +34,7 @@ export default NextAuth({
         if (!user) {
           throw new Error('User not found.');
         }
+
         const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 
         if (!isPasswordCorrect) {
