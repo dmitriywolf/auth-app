@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_BREAKPOINTS } from '@/common/constants';
 
 const instance = axios.create({
-  baseURL: process.env.NEXTAUTH_URL,
+  baseURL: `${process.env.NEXT_PUBLIC_DOMAIN}/api`,
 });
 
 instance.interceptors.request.use(
@@ -55,7 +55,7 @@ export const postResetPassword = async ({ password, token }) => {
 
 export const postActivateEmail = async ({ token }) => {
   try {
-    const { data } = await axios.put(API_BREAKPOINTS.activateEmail, { token });
+    const { data } = await instance.put(API_BREAKPOINTS.activateEmail, { token });
     return data;
   } catch (error) {
     throw new Error(error.response.data.message);

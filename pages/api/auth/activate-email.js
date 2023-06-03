@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import User from '@/models/User';
 import connectDb from '@/utils/connectDb';
 
-const { ACTIVATION_TOKEN_SECRET } = process.env;
+const ACTIVATION_TOKEN_SECRET = process.env.ACTIVATION_TOKEN_SECRET;
 
 export default async function activateEmailHandler(req, res) {
   try {

@@ -5,7 +5,7 @@ import { PATHS } from '@/common/constants';
 
 export default function ProfileMenu({ session }) {
   const signOutHandler = () => {
-    signOut();
+    signOut({ callbackUrl: PATHS.home });
   };
 
   return (

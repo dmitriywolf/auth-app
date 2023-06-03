@@ -9,8 +9,8 @@ export const PATHS = {
 };
 
 export const API_BREAKPOINTS = {
-  activateEmail: '/api/auth/activate-email',
-  forgotPassword: '/api/auth/forgot-password',
-  resetPassword: '/api/auth/reset-password',
-  signUp: '/api/auth/signup',
+  activateEmail: '/auth/activate-email',
+  forgotPassword: '/auth/forgot-password',
+  resetPassword: '/auth/reset-password',
+  signUp: '/auth/signup',
 };

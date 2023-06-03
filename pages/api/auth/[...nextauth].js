@@ -12,7 +12,7 @@ import clientPromise from '@/lib/mongoAdapter';
 import User from '@/models/User';
 import connectDb from '@/utils/connectDb';
 
-export default NextAuth({
+export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     CredentialsProvider({
@@ -84,4 +84,6 @@ export default NextAuth({
       return session;
     },
   },
-});
+};
+
+export default NextAuth(authOptions);

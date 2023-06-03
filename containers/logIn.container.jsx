@@ -30,7 +30,6 @@ export default function LogInContainer() {
       email,
       password,
       redirect: false,
-      callbackUrl: process.env.NEXTAUTH_URL,
     });
 
     if (res.error) {

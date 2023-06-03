@@ -1,8 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { getServerSession } from 'next-auth/next';
 import { useSession } from 'next-auth/react';
 
+import { PATHS } from '@/common/constants';
 import { Plate, Section } from '@/components/UI';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -53,4 +56,21 @@ export default function ProfilePage() {
       </Section>
     </>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  const session = await getServerSession(req, res, authOptions);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: PATHS.home,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

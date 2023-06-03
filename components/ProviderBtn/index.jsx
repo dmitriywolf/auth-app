@@ -9,6 +9,8 @@ import {
 } from 'react-icons/fa';
 import { SiAuth0 } from 'react-icons/si';
 
+import { PATHS } from '@/common/constants';
+
 const colors = {
   google: '#DB4437',
   // facebook: '#4285F4',
@@ -42,7 +44,7 @@ const getIcon = (id) => {
 
 export default function ProviderBtn({ id, label }) {
   const signInHandler = () => {
-    signIn(id);
+    signIn(id, { callbackUrl: `${process.env.NEXT_PUBLIC_DOMAIN}${PATHS.profile}` });
   };
 
   return (

@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '@/models/User';
 import connectDb from '@/utils/connectDb';
 
-const { RESET_TOKEN_SECRET } = process.env;
+const RESET_TOKEN_SECRET = process.env.RESET_TOKEN_SECRET;
 
 export default async function resetPasswordHandler(req, res) {
   try {
