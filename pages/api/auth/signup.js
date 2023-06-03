@@ -50,7 +50,7 @@ export default async function signUpHandler(req, res) {
       id: newUser._id.toString(),
     });
 
-    const url = `${process.env.DOMAIN}/auth/activate-email/${activation_token}`;
+    const url = `${process.env.BASE_URL}/auth/activate-email/${activation_token}`;
 
     await sendMail({
       to: newUser.email,

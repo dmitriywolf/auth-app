@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_BREAKPOINTS } from '@/common/constants';
 
 const instance = axios.create({
-  baseURL: `${process.env.DOMAIN}/api`,
+  baseURL: `${process.env.BASE_URL}/api`,
 });
 
 instance.interceptors.request.use(
