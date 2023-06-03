@@ -43,7 +43,8 @@ const getIcon = (id) => {
 };
 
 export default function ProviderBtn({ id, label }) {
-  const signInHandler = () => {
+  const signInHandler = (e) => {
+    e.preventDefault();
     signIn(id, { callbackUrl: `${process.env.BASE_URL}${PATHS.profile}` });
   };
 
