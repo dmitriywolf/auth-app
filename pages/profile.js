@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { getServerSession } from 'next-auth/next';
+import { unstable_getServerSession } from 'next-auth/next';
 import { useSession } from 'next-auth/react';
 
 import { Plate, Section } from '@/components/UI';
@@ -58,7 +58,7 @@ export default function ProfilePage() {
 }
 
 export async function getServerSideProps(context) {
-  const session = await getServerSession(context.req, context.res, authOptions);
+  const session = await unstable_getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {
