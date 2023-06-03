@@ -31,23 +31,17 @@ export const authOptions = {
         await connectDb();
 
         const user = await User.findOne({ email: credentials.email });
+
+        if (!user) {
+          throw new Error('User not found.');
+        }
+
         const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 
-        if (user && isPasswordCorrect) {
-          return user;
-        } else {
-          return null;
+        if (!isPasswordCorrect) {
+          throw new Error('Wrong password.');
         }
-        // if (!user) {
-        //   throw new Error('User not found.');
-        // }
-
-        // const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
-
-        // if (!isPasswordCorrect) {
-        //   throw new Error('Wrong password.');
-        // }
-        // return user;
+        return user;
       },
     }),
     GoogleProvider({
