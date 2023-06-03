@@ -20,7 +20,7 @@ export default async function forgotPasswordHandler(req, res) {
       id: user._id.toString(),
     });
 
-    const url = `${process.env.BASE_URL}/auth/reset-password/${userId}`;
+    const url = `${process.env.NEXTAUTH_URL}/auth/reset-password/${userId}`;
 
     await sendMail({
       to: email,

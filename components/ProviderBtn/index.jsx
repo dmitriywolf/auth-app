@@ -45,7 +45,7 @@ const getIcon = (id) => {
 export default function ProviderBtn({ id, label }) {
   const signInHandler = (e) => {
     e.preventDefault();
-    signIn(id, { callbackUrl: `${process.env.BASE_URL}${PATHS.profile}` });
+    signIn(id, { callbackUrl: `${process.env.NEXTAUTH_URL}${PATHS.profile}` });
   };
 
   return (
