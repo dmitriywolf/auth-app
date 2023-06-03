@@ -20,7 +20,7 @@ export const authOptions = {
       credentials: {
         email: {
           label: 'Email',
-          type: 'email',
+          type: 'text',
         },
         password: {
           label: 'Password',
@@ -31,16 +31,23 @@ export const authOptions = {
         await connectDb();
 
         const user = await User.findOne({ email: credentials.email });
-        if (!user) {
-          throw new Error('User not found.');
-        }
-
         const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
 
-        if (!isPasswordCorrect) {
-          throw new Error('Wrong password.');
+        if (user && isPasswordCorrect) {
+          return user;
+        } else {
+          return null;
         }
-        return user;
+        // if (!user) {
+        //   throw new Error('User not found.');
+        // }
+
+        // const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
+
+        // if (!isPasswordCorrect) {
+        //   throw new Error('Wrong password.');
+        // }
+        // return user;
       },
     }),
     GoogleProvider({
