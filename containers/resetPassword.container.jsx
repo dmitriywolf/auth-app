@@ -26,9 +26,10 @@ export default function ResetPasswordContainer({ token }) {
 
   const watchPassword = watch('password');
 
-  const onSubmit = async ({ password }) => {
+  const onSubmit = async (values, e) => {
+    e.preventDefault();
     try {
-      const data = await postResetPassword({ password, token });
+      const data = await postResetPassword({ password: values.password, token });
       reset();
       toast.success(data.message);
       router.push(PATHS.logIn);

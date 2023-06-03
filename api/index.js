@@ -2,9 +2,7 @@ import axios from 'axios';
 
 import { API_BREAKPOINTS } from '@/common/constants';
 
-const instance = axios.create({
-  baseURL: `${process.env.NEXTAUTH_URL}/api`,
-});
+const instance = axios.create();
 
 instance.interceptors.request.use(
   (config) => config,

@@ -21,7 +21,8 @@ export default function ForgotPasswordContainer() {
     },
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, e) => {
+    e.preventDefault();
     const { email } = values;
     try {
       const data = await postForgotPassword({ email });

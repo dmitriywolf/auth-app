@@ -23,7 +23,8 @@ export default function LogInContainer() {
     },
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, e) => {
+    e.preventDefault();
     const { email, password } = values;
 
     const res = await signIn('credentials', {

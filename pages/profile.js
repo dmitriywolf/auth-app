@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { getServerSession } from 'next-auth/next';
 import { useSession } from 'next-auth/react';
 
-import { PATHS } from '@/common/constants';
 import { Plate, Section } from '@/components/UI';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
@@ -58,13 +57,13 @@ export default function ProfilePage() {
   );
 }
 
-export async function getServerSideProps({ req, res }) {
-  const session = await getServerSession(req, res, authOptions);
+export async function getServerSideProps(context) {
+  const session = await getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {
       redirect: {
-        destination: PATHS.home,
+        destination: '/',
         permanent: false,
       },
     };

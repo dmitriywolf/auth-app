@@ -33,7 +33,8 @@ export default function SignUpContainer() {
 
   const watchPassword = watch('password');
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values, e) => {
+    e.preventDefault();
     try {
       const data = await postRegister(values);
       reset();
