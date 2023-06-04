@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { postRegister } from '@/api';
+import { postRegister } from '@/axios-api';
 import { PATHS } from '@/common/constants';
 import SignUpForm from '@/components/forms/SignUpForm';
 import { SIGN_UP_SCHEMA } from '@/schemas';

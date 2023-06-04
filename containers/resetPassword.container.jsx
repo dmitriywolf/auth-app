@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-import { postResetPassword } from '@/api';
+import { postResetPassword } from '@/axios-api';
 import { PATHS } from '@/common/constants';
 import ResetPasswordForm from '@/components/forms/ResetPasswordForm';
 import { RESET_PASSWORD_SCHEMA } from '@/schemas';

@@ -1,10 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { unstable_getServerSession } from 'next-auth/next';
+import { getServerSession } from 'next-auth/next';
 import { useSession } from 'next-auth/react';
 
 import { Plate, Section } from '@/components/UI';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
+
+import { authOptions } from './api/auth/[...nextauth]';
 
 const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -58,7 +59,7 @@ export default function ProfilePage() {
 }
 
 export async function getServerSideProps(context) {
-  const session = await unstable_getServerSession(context.req, context.res, authOptions);
+  const session = await getServerSession(context.req, context.res, authOptions);
 
   if (!session) {
     return {

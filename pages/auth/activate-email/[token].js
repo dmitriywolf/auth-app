@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { CircleLoader } from 'react-spinners';
 
-import { postActivateEmail } from '@/api';
+import { postActivateEmail } from '@/axios-api';
 import { Plate, Section } from '@/components/UI';
 
 export default function ActivateEmailPage({ token }) {
